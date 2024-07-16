@@ -1,12 +1,12 @@
-import extract_module
-import load_module
+import src.extract.extract_module as extract_module
+import src.load.load_module as load_module
 import os
 
 #set environment defaults
 os.environ.setdefault("GCLOUD_PROJECT", "cosmic-gizmo-269713")
 
 #import synthea data from web and seperate to individual fhir resources lists for loading to BQ
-patients, organizations, practitioners, encounters, conditions, medicationrequests, claims, careteams, goals, careplans, explanationofbenefits, observations, procedures, immunizations, diagnostictreports = extract_module.import_from_web("https://synthetichealth.github.io/synthea-sample-data/downloads/synthea_sample_data_fhir_r4_sep2019.zip",'fhir/Willian804_Moen819_439b24b4-6f25-4093-b101-47a39bd061ca.json')
+patients, organizations, practitioners, encounters, conditions, medicationrequests, claims, careteams, goals, careplans, explanationofbenefits, observations, procedures, immunizations, diagnostictreports = extract_module.import_from_web("https://synthetichealth.github.io/synthea-sample-data/downloads/synthea_sample_data_fhir_r4_sep2019.zip")
 
 #load fhir data to BQ
 load_module.load_to_bq(patients,"cosmic-gizmo-269713.python_fhir_project.Patient")

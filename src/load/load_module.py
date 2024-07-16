@@ -1,7 +1,6 @@
 from google.cloud import bigquery
 import os
 import extract_module #can remove once tested this works
-
 #TODO Add exception handling
 #TODO Add logging
 
